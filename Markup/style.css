@@ -1,24 +1,199 @@
 *{
     font-family: 'Rubik', sans-serif;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 
 }
 
 body{
-
-    background-color:#0f1424 ;
-
+    background-color:#0f1424;
+   
 }
 
+
+
+.container{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    padding-top:10%;
+    padding-left:15%;
+    padding-right:10%;
+    margin-left:3%;
+  
+}
+
+.top-container-1{
+   
+    background-color: #5847eb;
+    flex-direction: column;
+    border-radius: 1em ;
+    width: 280px;
+    height: 400px;
+    transform: translateY(0.5em);
+
+}
 .profile-container{
+   
+    margin:1%;
+    width: 280px;
 
-    background-color:#5847eb ;
+}
+.buttons{
+    display: flex;
+    background-color:#1c1f4a;
+    flex-direction: column;
+    width: 280px;
+    height: 190px;
+    border-radius: 0 0 1em 1em;
+    align-items: flex-start;
+    
+}
+
+button{
+    margin: 2%;
+    background: transparent;
+    outline: none;
+    border: none;
+    font-size: 110%;
+    letter-spacing: .5px;
+    cursor: pointer;
+    padding-top: 5%;
+    padding-left: 10%;
+    font-weight: 300;
+    color: #bdc1ff;
+
+}
+
+button:hover{
+    color: #ffffff;
+
+}
+
+.buttons #btndaily{
+    padding-top: 12%;
+
+}
+
+.active{
+    
+    color: #ffffff;
+
+}
+
+
+.cards-container{
+    display: flex;
+    margin: 1.5%;
+    gap: 25px 2%;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: center;
+}
+
+.information-container{
+    background-color:#1c1f4a;
+    border-radius: 1em ;
+    transform: translateY(-1.5em);
+    width: 280px;
+    height: 210px;
+}
+
+
+img{
+    margin-bottom: 2em;
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+    border: solid white 4px;
+    margin-top: 12%;
+    margin-left: 10%;
+
+}
+.back{
+    display: flex;  
+    justify-content: flex-end;
+    border-radius: 1em 1em 0 0;
+    width: 280px;
+    height: 80px;
+
+}
+.text1{
+    color: #bdc1ff;
+
+}
+.name{
+    font-weight:300;
+    font-size:300%;
+}
+
+.titles{
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+
+.textprofile p{
+    margin:0%;
+    padding-left: 10%;
+    padding-top: 3%;
+}
+
+p{
+    margin:10% 10%;
+}
+
+.hours{
+    font-weight:300;
+    font-size:350%;
+    margin-left: 10%; 
+}
+.time{
+    font-weight:400;
+    font-size:100%;
+    margin: 5%;
+    padding-left: 5%;
+    color: #bdc1ff;
+
+}
+
+.information-container:hover{
+    cursor: pointer;
+    background-color: #33387a;
 
 
 }
 
-.time-option, .information-container{
-
-    background-color:#1c1f4a ;
-
-
+div .work-container .back{
+    background-color:#ff8c66;
+   
 }
+
+div .play-container .back{
+    background-color:#56c2e6;
+}
+
+div .study-container .back{
+    background-color:#ff5c7c;
+}
+
+div .exercise-container .back{
+    background-color:#4acf81;
+}
+
+div .social-container .back{
+    background-color:#7536d3;
+}
+
+div .self-care-container .back{
+    background-color:#f1c65b;
+}
+
+
+
+
