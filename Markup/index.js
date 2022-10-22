@@ -16,15 +16,12 @@ function daily(){
     fetch(url)
     .then((response) => response.json())
     .then(data => {
-        title.forEach((element, i) => {
+        data.forEach((element, i) => {
             title[i].innerHTML = data[i].title 
-        })
-        hours.forEach((element, i) => {
             hours[i].innerHTML = data[i].timeframes.daily.current + 'hrs'
-        })
-        time.forEach((element, i) => {
             time[i].innerHTML = 'Last Daily - ' + data[i].timeframes.daily.previous + 'hrs'
         })
+     
     })
     .catch(error => console.error(error));
 
@@ -36,10 +33,8 @@ function weekly(){
     fetch(url)
     .then((response) => response.json())
     .then(data => {
-        hours.forEach((element, i) => {
+        data.forEach((element, i) => {
             hours[i].innerHTML = data[i].timeframes.weekly.current + 'hrs'
-        })
-        time.forEach((element, i) => {
             time[i].innerHTML = 'Last Weekly - ' + data[i].timeframes.weekly.previous + 'hrs'
         })
     })
@@ -51,17 +46,14 @@ function monthly(){
     fetch(url)
     .then((response) => response.json())
     .then(data => {
-        hours.forEach((element, i) => {
+        data.forEach((element, i) => {
             hours[i].innerHTML = data[i].timeframes.monthly.current + 'hrs'
-        })
-        time.forEach((element, i) => {
             time[i].innerHTML = 'Last Monthly - ' + data[i].timeframes.monthly.previous + 'hrs'
         })
     })
     .catch(error => console.error(error));
 
 }
-
 
 
 btndaily.addEventListener('click', () => {
