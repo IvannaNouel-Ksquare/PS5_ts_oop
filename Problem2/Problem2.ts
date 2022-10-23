@@ -71,13 +71,10 @@ export class Matrix {
         for (let i = 0; i < this._row; i++) {
             for (let j = 0; j < matrix._column; j++) {
                     matrixMultiplication.insert(i,j, matrix.getElement(j,i) * this.getElement(i,j));
-                    for (let k = 0; k < this._column; k++) {
-                        m.insert(i,j, matrix.getElement(k,i) + this.getElement(k,j));
-                       
-                }
+                    
             }
         }
-        return m;
+        return matrixMultiplication;
 
 
     }
