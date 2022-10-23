@@ -4,13 +4,6 @@ export class Matrix {
     private _column: number;
     private _arr: number[][];
 
-
-    /*  get the number of rows
-     get the number of columns
-     set the elements of the matrix at the given position (i,j)
-     add two matrices. If the matrices cannot be added log, "NOOP"
-     multiplying the two matrices */
-
     constructor(row: number, column: number) {
         this._row = row;
         this._column = column;
@@ -24,21 +17,25 @@ export class Matrix {
         }
     }
 
+    // get the number of rows
     public get row() {
         return this._row;
     }
 
+    //get the number of columns
     public get column() {
 
         return this._column;
     }
 
-
+    //set the elements of the matrix at the given position (i,j)
     public insert(row: number, column: number, element: number) {
 
         this._arr[row][column] = element;
 
     }
+
+    //get the elements of the matrix at the given position (i,j)
 
     public getElement(row: number, column: number) {
 
@@ -46,35 +43,51 @@ export class Matrix {
 
     }
 
+    //add two matrices. If the matrices cannot be added log, "NOOP"
+
     public sum(matrix: Matrix) {
         //creating a new variable that contains the type Matrix
         let matrixSum = new Matrix(this._row, this._column);
 
-        for (let i = 0; i < this._row; i++) {
-            for (let j = 0; j < this._column; j++) {
-
-                //creating the new matrix with the sum of the other matrices
-                //parameters row(i), colum(j) and then matrix is going to get the element of the matrix that I pass 
-                matrixSum.insert(i, j, matrix.getElement(i, j) + this.getElement(i, j));
-
+/*         if ((this.row === matrix.row) && (this.column === matrix.column)) {
+ */            for (let i = 0; i < this._row; i++) {
+                for (let j = 0; j < this._column; j++) {
+    
+                    //creating the new matrix with the sum of the other matrices
+                    //parameters row(i), colum(j) and then matrix is going to get the element of the matrix that I pass 
+                    matrixSum.insert(i, j, matrix.getElement(i, j) + this.getElement(i, j));
+    
+                }
             }
-        }
-        return matrixSum;
-
+            return matrixSum;
+      /*   }
+        else{
+            console.log("NOOP")
+        } */
+       
     }
+
+    //multiplying the two matrices 
 
     public multiplication(matrix: Matrix) {
 
         let matrixMultiplication = new Matrix(this._row, matrix._column);
-        let m = new Matrix(this._row, matrix._column);
 
         for (let i = 0; i < this._row; i++) {
             for (let j = 0; j < matrix._column; j++) {
-                    matrixMultiplication.insert(i,j, matrix.getElement(j,i) * this.getElement(i,j));
-                    
+                let m = 0;
+                for (let k = 0; k < this._column; k++) {
+                    matrixMultiplication.insert(i, j, m += this.getElement(i, k) * matrix.getElement(k, j));
+
+                }
+
             }
+
+
         }
         return matrixMultiplication;
+
+
 
 
     }
