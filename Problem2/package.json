@@ -1,0 +1,24 @@
+{
+  "name": "homework_1",
+  "version": "1.0.0",
+  "description": "Markup ![Screen Shot 2022-10-22 at 12 54 28 PM](https://user-images.githubusercontent.com/113380905/197355595-f13c5df2-c309-4a54-ac74-35ec3ccb0bc2.png)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IvannaNouel-Ksquare/Homework_1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IvannaNouel-Ksquare/Homework_1/issues"
+  },
+  "homepage": "https://github.com/IvannaNouel-Ksquare/Homework_1#readme",
+  "dependencies": {
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.4"
+  }
+}
