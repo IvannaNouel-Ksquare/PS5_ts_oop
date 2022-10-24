@@ -9,6 +9,8 @@ export class Matrix {
         this._column = column;
         this._arr = [];
 
+        //initialize the array
+
         for (let i: number = 0; i < row; i++) {
             this._arr[i] = [];
             for (let j: number = 0; j < column; j++) {
@@ -49,8 +51,10 @@ export class Matrix {
         //creating a new variable that contains the type Matrix
         let matrixSum = new Matrix(this._row, this._column);
 
-/*         if ((this.row === matrix.row) && (this.column === matrix.column)) {
- */            for (let i = 0; i < this._row; i++) {
+        //checking if the rows and columns match so we can add
+        if ((this._row === matrix._row) && (this._column === matrix._column)) {
+
+            for (let i = 0; i < this._row; i++) {
                 for (let j = 0; j < this._column; j++) {
     
                     //creating the new matrix with the sum of the other matrices
@@ -60,10 +64,10 @@ export class Matrix {
                 }
             }
             return matrixSum;
-      /*   }
+        }
         else{
             console.log("NOOP")
-        } */
+        }
        
     }
 
@@ -72,6 +76,9 @@ export class Matrix {
     public multiplication(matrix: Matrix) {
 
         let matrixMultiplication = new Matrix(this._row, matrix._column);
+
+        //checks the condition if the first matrix has the same number of columns as the same number of rows of the first matrix
+        if(this._column === matrix._row ){
 
         for (let i = 0; i < this._row; i++) {
             for (let j = 0; j < matrix._column; j++) {
@@ -87,8 +94,10 @@ export class Matrix {
         }
         return matrixMultiplication;
 
+    }else{
+        console.log("NOOP")
 
-
+    }
 
     }
 
