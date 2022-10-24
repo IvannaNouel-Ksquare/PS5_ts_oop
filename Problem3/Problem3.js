@@ -1,3 +1,4 @@
+//Size of the pizza (small, medium, large, or extra-large)
 var PizzaSize;
 (function (PizzaSize) {
     PizzaSize[PizzaSize["Small"] = 0] = "Small";
@@ -6,87 +7,26 @@ var PizzaSize;
     PizzaSize[PizzaSize["XL"] = 3] = "XL";
 })(PizzaSize || (PizzaSize = {}));
 var Pizza = /** @class */ (function () {
-    function Pizza(builder) {
+    //Set all the values in the construct
+    function Pizza(pizzaSize, haveExtraCheese, pepperoniCount, hamCount, pineappleCount) {
         this.pizzaSize = this.getPizzaSize();
         this.haveExtraCheese = this.getHaveExtraCheese();
-        this.pepperoniCount = 2;
-        this.hamCount = 2;
-        this.pineappleCount = 2;
-        this.setPizzaSize(builder.pizzaSize);
-        this.setHaveExtraCheese(builder.haveExtraCheese);
-        this.setPepperoniCount(builder.pepperoniCount);
-        this.setHamCount(builder.hamCount);
-        this.setPineappleCount(builder.pineappleCount);
+        this.pepperoniCount = pepperoniCount;
+        this.hamCount = hamCount;
+        this.pineappleCount = pineappleCount;
     }
+    //get cost
     Pizza.prototype.getCost = function () {
-        var baseCost = this.getBaseCostBySize();
-        var extraCheeseCost = this.getExtraCheeseValueBySize();
-        var ingredientBaseCost = this.getIngredientsCostBySize();
-        var ingredientCost = ingredientBaseCost * (this.getPepperoniCount() + this.getPineappleCount() + this.getPineappleCount());
-        return baseCost + extraCheeseCost + ingredientCost;
+        var baseCost = [10, 12, 14, 18];
+        var extraCheeseCost = [2, 4, 6, 6];
+        var ingredientBaseCost = [2, 2, 3, 4];
+        var ingredientCost = ingredientBaseCost[this.pizzaSize] * (this.getPepperoniCount() + this.getPineappleCount() + this.getPineappleCount());
+        return baseCost[this.pizzaSize] + extraCheeseCost[this.pizzaSize] + ingredientCost;
     };
     Pizza.prototype.orderSummary = function () {
-        return String.arguments("Size: %s, Price: %s, Extra Cheese: %s, Pepperoni Count: %s, Ham Count: %s, Pineapple Count: %s", 
-        this.getPizzaSize().toString(), 
-        this.getCost().toString(),
-         this.getHaveExtraCheese().toString(), 
-         this.getPepperoniCount().toString(), 
-         this.getHamCount().toString(), 
-         this.getPineappleCount().toString());
+        return this.getPizzaSize, this.getCost().toString(), this.getHaveExtraCheese().toString(), this.getPepperoniCount().toString(), this.getHamCount().toString(), this.getPineappleCount().toString();
     };
-    Pizza.prototype.getIngredientsCostBySize = function () {
-        var value = 0;
-        switch (this.getPizzaSize()) {
-            case PizzaSize.Small:
-            case PizzaSize.Medium:
-                value = 2;
-                break;
-            case PizzaSize.Large:
-                value = 3;
-                break;
-            case PizzaSize.XL:
-                value = 4;
-                break;
-        }
-        return value;
-    };
-    Pizza.prototype.getExtraCheeseValueBySize = function () {
-        var value = 0;
-        if (!this.getHaveExtraCheese()) {
-            return value;
-        }
-        switch (this.getPizzaSize()) {
-            case PizzaSize.Small:
-                value = 2;
-                break;
-            case PizzaSize.Medium:
-                value = 4;
-                break;
-            case PizzaSize.Large:
-            case PizzaSize.XL:
-                value = 6;
-                break;
-        }
-        return value;
-    };
-    Pizza.prototype.getBaseCostBySize = function () {
-        var baseCost = 0;
-        switch (this.getPizzaSize()) {
-            case PizzaSize.Small:
-                baseCost = 10;
-                break;
-            case PizzaSize.Medium:
-                baseCost = 12;
-                break;
-            case PizzaSize.Large:
-                baseCost = 14;
-                break;
-            case PizzaSize.XL:
-                baseCost = 18;
-                break;
-        }
-        return baseCost;
-    };
+    //Create getters and setters for each property
     Pizza.prototype.getHamCount = function () {
         return this.hamCount;
     };
@@ -119,3 +59,6 @@ var Pizza = /** @class */ (function () {
     };
     return Pizza;
 }());
+var pizza1 = new Pizza(1, true, 2, 2, 2);
+console.log("Pizza1 Summary: %s", pizza1);
+console.log(pizza1.getCost());
