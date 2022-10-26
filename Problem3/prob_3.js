@@ -1,3 +1,4 @@
+"use strict";
 //the sizes of the Pizza
 var PizzaSize;
 (function (PizzaSize) {
@@ -7,12 +8,12 @@ var PizzaSize;
     PizzaSize[PizzaSize["XL"] = 3] = "XL";
 })(PizzaSize || (PizzaSize = {}));
 //class pizza created 
-var Pizza = /** @class */ (function () {
+class Pizza {
     //constructor to create the pizza
-    function Pizza(pizzaSize, haveExtraCheese, pepperoniCount, hamCount, pineappleCount) {
-        this.haveExtraCheese = false;
-        this.pepperoniCount = 0;
-        this.hamCount = 0;
+    constructor(pizzaSize, haveExtraCheese, pepperoniCount, hamCount, pineappleCount) {
+        this._haveExtraCheese = false;
+        this._pepperoniCount = 0;
+        this._hamCount = 0;
         this.pineappleCount = 0;
         this.pizzaSize = pizzaSize;
         this.haveExtraCheese = haveExtraCheese;
@@ -20,9 +21,34 @@ var Pizza = /** @class */ (function () {
         this.hamCount = hamCount;
         this.pineappleCount = pineappleCount;
     }
+    //getters and setters
+    get haveExtraCheese() {
+        return this._haveExtraCheese;
+    }
+    get pepperoniCount() {
+        return this._pepperoniCount;
+    }
+    get hamCount() {
+        return this._hamCount;
+    }
+    get pizzaSize() {
+        return this._pizzaSize;
+    }
+    set haveExtraCheese(haveExtraCheese) {
+        this._haveExtraCheese = haveExtraCheese;
+    }
+    set pepperoniCount(pepperoniCount) {
+        this._pepperoniCount = pepperoniCount;
+    }
+    set hamCount(hamCount) {
+        this._hamCount = hamCount;
+    }
+    set pizzaSize(pizzaSize) {
+        this._pizzaSize = pizzaSize;
+    }
     //switch case to get the cost of the ingridients by pizza size
-    Pizza.prototype.getIngredientsCostBySize = function () {
-        var value = 0;
+    getIngredientsCostBySize() {
+        let value = 0;
         switch (this.pizzaSize) {
             case PizzaSize.Small:
             case PizzaSize.Medium:
@@ -36,10 +62,10 @@ var Pizza = /** @class */ (function () {
                 break;
         }
         return value;
-    };
+    }
     //switch case to get the cost of the extra cheese by pizza size
-    Pizza.prototype.getExtraCheeseValueBySize = function () {
-        var value = 0;
+    getExtraCheeseValueBySize() {
+        let value = 0;
         if (!this.haveExtraCheese) {
             return value;
         }
@@ -56,10 +82,10 @@ var Pizza = /** @class */ (function () {
                 break;
         }
         return value;
-    };
+    }
     //switch case to get the cost by pizza size
-    Pizza.prototype.getBaseCostBySize = function () {
-        var baseCost = 0;
+    getBaseCostBySize() {
+        let baseCost = 0;
         switch (this.pizzaSize) {
             case PizzaSize.Small:
                 baseCost = 10;
@@ -75,21 +101,20 @@ var Pizza = /** @class */ (function () {
                 break;
         }
         return baseCost;
-    };
+    }
     //method to get the price
-    Pizza.prototype.getCost = function () {
-        var baseCost = this.getBaseCostBySize();
-        var extraCheeseCost = this.getExtraCheeseValueBySize();
-        var ingredientBaseCost = this.getIngredientsCostBySize();
-        var ingredientCost = (ingredientBaseCost * (this.pepperoniCount + (this.pineappleCount + this.pineappleCount)));
+    getCost() {
+        let baseCost = this.getBaseCostBySize();
+        let extraCheeseCost = this.getExtraCheeseValueBySize();
+        let ingredientBaseCost = this.getIngredientsCostBySize();
+        let ingredientCost = (ingredientBaseCost * (this.pepperoniCount + (this.pineappleCount + this.pineappleCount)));
         return (baseCost + (extraCheeseCost + ingredientCost));
-    };
-    return Pizza;
-}());
+    }
+}
 //Generating pizzas to see if code works 
-var pizza1 = new Pizza(2, false, 0, 6, 0);
-var pizza2 = new Pizza(3, true, 2, 4, 2);
-var pizza3 = new Pizza(1, false, 1, 1, 3);
+const pizza1 = new Pizza(2, false, 0, 6, 0);
+const pizza2 = new Pizza(3, true, 2, 4, 2);
+const pizza3 = new Pizza(1, false, 1, 1, 3);
 console.log("----Pizza : 1----");
 console.log("Pizza1 Summary: ", pizza1);
 console.log("Pizza1 Price: ", pizza1.getCost());
