@@ -1,3 +1,4 @@
+//the sizes of the Pizza
 var PizzaSize;
 (function (PizzaSize) {
     PizzaSize[PizzaSize["Small"] = 0] = "Small";
@@ -5,7 +6,9 @@ var PizzaSize;
     PizzaSize[PizzaSize["Large"] = 2] = "Large";
     PizzaSize[PizzaSize["XL"] = 3] = "XL";
 })(PizzaSize || (PizzaSize = {}));
+//class pizza created 
 var Pizza = /** @class */ (function () {
+    //constructor to create the pizza
     function Pizza(pizzaSize, haveExtraCheese, pepperoniCount, hamCount, pineappleCount) {
         this.haveExtraCheese = false;
         this.pepperoniCount = 0;
@@ -17,6 +20,7 @@ var Pizza = /** @class */ (function () {
         this.hamCount = hamCount;
         this.pineappleCount = pineappleCount;
     }
+    //switch case to get the cost of the ingridients by pizza size
     Pizza.prototype.getIngredientsCostBySize = function () {
         var value = 0;
         switch (this.pizzaSize) {
@@ -33,6 +37,7 @@ var Pizza = /** @class */ (function () {
         }
         return value;
     };
+    //switch case to get the cost of the extra cheese by pizza size
     Pizza.prototype.getExtraCheeseValueBySize = function () {
         var value = 0;
         if (!this.haveExtraCheese) {
@@ -52,6 +57,7 @@ var Pizza = /** @class */ (function () {
         }
         return value;
     };
+    //switch case to get the cost by pizza size
     Pizza.prototype.getBaseCostBySize = function () {
         var baseCost = 0;
         switch (this.pizzaSize) {
@@ -70,18 +76,17 @@ var Pizza = /** @class */ (function () {
         }
         return baseCost;
     };
+    //method to get the price
     Pizza.prototype.getCost = function () {
         var baseCost = this.getBaseCostBySize();
         var extraCheeseCost = this.getExtraCheeseValueBySize();
         var ingredientBaseCost = this.getIngredientsCostBySize();
-        var ingredientCost = (ingredientBaseCost
-            * (this.pepperoniCount
-                + (this.pineappleCount + this.pineappleCount)));
-        return (baseCost
-            + (extraCheeseCost + ingredientCost));
+        var ingredientCost = (ingredientBaseCost * (this.pepperoniCount + (this.pineappleCount + this.pineappleCount)));
+        return (baseCost + (extraCheeseCost + ingredientCost));
     };
     return Pizza;
 }());
+//Generating pizzas to see if code works 
 var pizza1 = new Pizza(2, false, 0, 6, 0);
 var pizza2 = new Pizza(3, true, 2, 4, 2);
 var pizza3 = new Pizza(1, false, 1, 1, 3);
