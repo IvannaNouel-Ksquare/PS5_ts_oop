@@ -56,48 +56,55 @@ export class Matrix {
 
             for (let i = 0; i < this._row; i++) {
                 for (let j = 0; j < this._column; j++) {
-    
+
                     //creating the new matrix with the sum of the other matrices
                     //parameters row(i), colum(j) and then matrix is going to get the element of the matrix that I pass 
                     matrixSum.insert(i, j, matrix.getElement(i, j) + this.getElement(i, j));
-    
+
                 }
             }
             return matrixSum;
         }
-        else{
+        else {
             console.log("NOOP")
         }
-       
+
     }
 
     //multiplying the two matrices 
 
     public multiplication(matrix: Matrix) {
 
+        //new matrix to save the multiplication
         let matrixMultiplication = new Matrix(this._row, matrix._column);
 
         //checks the condition if the first matrix has the same number of columns as the same number of rows of the first matrix
-        if(this._column === matrix._row ){
+        if (this._column === matrix._row) {
 
-        for (let i = 0; i < this._row; i++) {
-            for (let j = 0; j < matrix._column; j++) {
-                let m = 0;
-                for (let k = 0; k < this._column; k++) {
-                    matrixMultiplication.insert(i, j, m += this.getElement(i, k) * matrix.getElement(k, j));
+            //Goes thorough the rows of the second matrix
+            for (let i = 0; i < this._row; i++) {
+                //Goes thorough the columns of the first matrix
+                for (let j = 0; j < matrix._column; j++) {
+                    //declare variable here to sum 
+                    let m = 0;
+                    //Goes thorough the columns of the first matrix
+                    for (let k = 0; k < this._column; k++) {
+
+                        //'creating' matrix passing the operation
+                        matrixMultiplication.insert(i, j, m += this.getElement(i, k) * matrix.getElement(k, j));
+
+                    }
 
                 }
 
-            }
 
+            }
+            return matrixMultiplication;
+
+        } else {
+            console.log("NOOP")
 
         }
-        return matrixMultiplication;
-
-    }else{
-        console.log("NOOP")
-
-    }
 
     }
 
