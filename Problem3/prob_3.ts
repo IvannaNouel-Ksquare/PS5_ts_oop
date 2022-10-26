@@ -13,13 +13,12 @@ class Pizza {
     private _haveExtraCheese: boolean = false;
     private _pepperoniCount: number = 0;
     private _hamCount: number = 0;
-    private pineappleCount: number = 0;
-
+    private _pineappleCount: number = 0;
+   
     //getters and setters
     public get haveExtraCheese(): boolean {
         return this._haveExtraCheese;
     }
-
     public get pepperoniCount(): number {
         return this._pepperoniCount;
     }
@@ -29,14 +28,16 @@ class Pizza {
     public get pizzaSize(): PizzaSize {
         return this._pizzaSize;
     }
+    public get pineappleCount(): number {
+        return this._pineappleCount;
+    }
     public set haveExtraCheese(haveExtraCheese: boolean) {
         this._haveExtraCheese = haveExtraCheese;
     }
     
     public set pepperoniCount(pepperoniCount: number) {
         this._pepperoniCount = pepperoniCount;
-    }
-    
+    }    
     public set hamCount(hamCount: number) {
         this._hamCount = hamCount;
     }
@@ -44,6 +45,10 @@ class Pizza {
     public set pizzaSize(pizzaSize: PizzaSize) {
         this._pizzaSize = pizzaSize;
     }
+    public set pineappleCount(pineappleCount: number) {
+        this._pineappleCount = pineappleCount;
+    }
+
 
     //constructor to create the pizza
     constructor(pizzaSize: PizzaSize, haveExtraCheese: boolean, pepperoniCount: number, hamCount: number, pineappleCount: number) {

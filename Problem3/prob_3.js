@@ -1,4 +1,3 @@
-"use strict";
 //the sizes of the Pizza
 var PizzaSize;
 (function (PizzaSize) {
@@ -8,47 +7,73 @@ var PizzaSize;
     PizzaSize[PizzaSize["XL"] = 3] = "XL";
 })(PizzaSize || (PizzaSize = {}));
 //class pizza created 
-class Pizza {
+var Pizza = /** @class */ (function () {
     //constructor to create the pizza
-    constructor(pizzaSize, haveExtraCheese, pepperoniCount, hamCount, pineappleCount) {
+    function Pizza(pizzaSize, haveExtraCheese, pepperoniCount, hamCount, pineappleCount) {
         this._haveExtraCheese = false;
         this._pepperoniCount = 0;
         this._hamCount = 0;
-        this.pineappleCount = 0;
+        this._pineappleCount = 0;
         this.pizzaSize = pizzaSize;
         this.haveExtraCheese = haveExtraCheese;
         this.pepperoniCount = pepperoniCount;
         this.hamCount = hamCount;
         this.pineappleCount = pineappleCount;
     }
-    //getters and setters
-    get haveExtraCheese() {
-        return this._haveExtraCheese;
-    }
-    get pepperoniCount() {
-        return this._pepperoniCount;
-    }
-    get hamCount() {
-        return this._hamCount;
-    }
-    get pizzaSize() {
-        return this._pizzaSize;
-    }
-    set haveExtraCheese(haveExtraCheese) {
-        this._haveExtraCheese = haveExtraCheese;
-    }
-    set pepperoniCount(pepperoniCount) {
-        this._pepperoniCount = pepperoniCount;
-    }
-    set hamCount(hamCount) {
-        this._hamCount = hamCount;
-    }
-    set pizzaSize(pizzaSize) {
-        this._pizzaSize = pizzaSize;
-    }
+    Object.defineProperty(Pizza.prototype, "haveExtraCheese", {
+        //getters and setters
+        get: function () {
+            return this._haveExtraCheese;
+        },
+        set: function (haveExtraCheese) {
+            this._haveExtraCheese = haveExtraCheese;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Pizza.prototype, "pepperoniCount", {
+        get: function () {
+            return this._pepperoniCount;
+        },
+        set: function (pepperoniCount) {
+            this._pepperoniCount = pepperoniCount;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Pizza.prototype, "hamCount", {
+        get: function () {
+            return this._hamCount;
+        },
+        set: function (hamCount) {
+            this._hamCount = hamCount;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Pizza.prototype, "pizzaSize", {
+        get: function () {
+            return this._pizzaSize;
+        },
+        set: function (pizzaSize) {
+            this._pizzaSize = pizzaSize;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Pizza.prototype, "pineappleCount", {
+        get: function () {
+            return this._pineappleCount;
+        },
+        set: function (pineappleCount) {
+            this._pineappleCount = pineappleCount;
+        },
+        enumerable: false,
+        configurable: true
+    });
     //switch case to get the cost of the ingridients by pizza size
-    getIngredientsCostBySize() {
-        let value = 0;
+    Pizza.prototype.getIngredientsCostBySize = function () {
+        var value = 0;
         switch (this.pizzaSize) {
             case PizzaSize.Small:
             case PizzaSize.Medium:
@@ -62,10 +87,10 @@ class Pizza {
                 break;
         }
         return value;
-    }
+    };
     //switch case to get the cost of the extra cheese by pizza size
-    getExtraCheeseValueBySize() {
-        let value = 0;
+    Pizza.prototype.getExtraCheeseValueBySize = function () {
+        var value = 0;
         if (!this.haveExtraCheese) {
             return value;
         }
@@ -82,10 +107,10 @@ class Pizza {
                 break;
         }
         return value;
-    }
+    };
     //switch case to get the cost by pizza size
-    getBaseCostBySize() {
-        let baseCost = 0;
+    Pizza.prototype.getBaseCostBySize = function () {
+        var baseCost = 0;
         switch (this.pizzaSize) {
             case PizzaSize.Small:
                 baseCost = 10;
@@ -101,20 +126,21 @@ class Pizza {
                 break;
         }
         return baseCost;
-    }
+    };
     //method to get the price
-    getCost() {
-        let baseCost = this.getBaseCostBySize();
-        let extraCheeseCost = this.getExtraCheeseValueBySize();
-        let ingredientBaseCost = this.getIngredientsCostBySize();
-        let ingredientCost = (ingredientBaseCost * (this.pepperoniCount + (this.pineappleCount + this.pineappleCount)));
+    Pizza.prototype.getCost = function () {
+        var baseCost = this.getBaseCostBySize();
+        var extraCheeseCost = this.getExtraCheeseValueBySize();
+        var ingredientBaseCost = this.getIngredientsCostBySize();
+        var ingredientCost = (ingredientBaseCost * (this.pepperoniCount + (this.pineappleCount + this.pineappleCount)));
         return (baseCost + (extraCheeseCost + ingredientCost));
-    }
-}
+    };
+    return Pizza;
+}());
 //Generating pizzas to see if code works 
-const pizza1 = new Pizza(2, false, 0, 6, 0);
-const pizza2 = new Pizza(3, true, 2, 4, 2);
-const pizza3 = new Pizza(1, false, 1, 1, 3);
+var pizza1 = new Pizza(2, false, 0, 6, 0);
+var pizza2 = new Pizza(3, true, 2, 4, 2);
+var pizza3 = new Pizza(1, false, 1, 1, 3);
 console.log("----Pizza : 1----");
 console.log("Pizza1 Summary: ", pizza1);
 console.log("Pizza1 Price: ", pizza1.getCost());
